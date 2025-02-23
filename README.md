@@ -33,5 +33,3 @@ news_aggregator/
 ├── README.md
 ```
 
-## License
-This project is for learning purposes and is free to use.
