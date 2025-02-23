@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News Aggregator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Personalized News Aggregator</h1>
+
+        <form method="POST">
+            <label for="category">Choose a category:</label>
+            <select name="category" id="category">
+                <option value="general">General</option>
+                <option value="business">Business</option>
+                <option value="entertainment">Entertainment</option>
+                <option value="health">Health</option>
+                <option value="science">Science</option>
+                <option value="sports">Sports</option>
+                <option value="technology">Technology</option>
+            </select>
+
+            <label for="country">Choose a country:</label>
+            <select name="country" id="country">
+                <option value="us">USA</option>
+                <option value="gb">UK</option>
+                <option value="in">India</option>
+                <option value="ca">Canada</option>
+                <option value="au">Australia</option>
+            </select>
+
+            <button type="submit">Get News</button>
+        </form>
+
+        <div class="news-container">
+            {% for article in articles %}
+            <div class="news-item">
+                <h2><a href="{{ article.url }}" target="_blank">{{ article.title }}</a></h2>
+                <p>{{ article.description }}</p>
+                <img src="{{ article.urlToImage }}" alt="News Image">
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
